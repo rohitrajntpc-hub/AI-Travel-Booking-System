@@ -1,0 +1,487 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ── Base App Layout ────────────────────────────────────────────────────────── */
+html, body, .stApp {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #080d14;
+    color: #cce0f5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+#MainMenu, footer, header {
+    visibility: hidden;
+}
+
+/* Fluid Container Padding */
+.block-container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 3rem !important;
+    padding-left: clamp(1rem, 3vw, 2.5rem) !important;
+    padding-right: clamp(1rem, 3vw, 2.5rem) !important;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ── Hero Banner (Fully Responsive Auto-Height) ─────────────────────────────── */
+.hero-wrapper {
+    position: relative;
+    border-radius: clamp(14px, 2.5vw, 20px);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    min-height: 220px;
+    height: auto;
+    border: 1px solid #1a2a3e;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.32);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(1.2rem, 4vw, 2rem) clamp(1rem, 3vw, 2rem);
+}
+
+.hero-badge {
+    background: rgba(37, 99, 235, 0.25);
+    border: 1px solid rgba(59, 130, 246, 0.5);
+    color: #93c5fd;
+    font-size: clamp(0.68rem, 1.8vw, 0.78rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 0.65rem;
+    display: inline-block;
+    backdrop-filter: blur(6px);
+}
+
+/* Fluid Title (Automatic scaling from 1.5rem on phone to 2.3rem on PC) */
+.hero-title {
+    font-size: clamp(1.5rem, 4.5vw, 2.3rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 0.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.hero-sub {
+    color: #94a3b8;
+    font-size: clamp(0.82rem, 2vw, 0.95rem);
+    max-width: 620px;
+    line-height: 1.55;
+    margin: 0 auto;
+}
+
+.input-label {
+    color: #93c5fd;
+    font-size: clamp(0.78rem, 2vw, 0.85rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+/* ── Bordered Containers (Cards & Plan Container) ───────────────────────────── */
+div[data-testid="stVerticalBlockBorderWrapper"] > div {
+    background: #0b121e !important;
+    border: 1px solid #1a2a3e !important;
+    border-radius: 14px !important;
+    padding: clamp(0.85rem, 2vw, 1.3rem) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+div[data-testid="stVerticalBlockBorderWrapper"] > div:hover {
+    border-color: #2563eb66 !important;
+}
+
+/* ── Primary CTA Button (Build My Dream Trip) ───────────────────────────────── */
+button[kind="primary"],
+div[data-testid="stButton"] > button[kind="primary"] {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid #3b82f6 !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    font-size: clamp(0.9rem, 2vw, 1rem) !important;
+    padding: 0.75rem 1.25rem !important;
+    min-height: 48px !important; /* Touch-friendly tap target */
+    width: 100% !important;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35) !important;
+    transition: all 0.25s ease !important;
+    cursor: pointer !important;
+}
+
+button[kind="primary"]:hover,
+div[data-testid="stButton"] > button[kind="primary"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 25px rgba(37, 99, 235, 0.5) !important;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+}
+
+/* ── Secondary Buttons (Quick Preset Chips) ─────────────────────────────────── */
+button[kind="secondary"],
+div[data-testid="stButton"] > button[kind="secondary"] {
+    background: #0c1524 !important;
+    color: #93c5fd !important;
+    border: 1px solid #1e3050 !important;
+    border-radius: 10px !important;
+    font-weight: 500 !important;
+    font-size: clamp(0.78rem, 1.8vw, 0.85rem) !important;
+    padding: 0.55rem 0.8rem !important;
+    min-height: 42px !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
+}
+
+button[kind="secondary"]:hover,
+div[data-testid="stButton"] > button[kind="secondary"]:hover {
+    background: #132035 !important;
+    border-color: #3b82f6 !important;
+    color: #ffffff !important;
+    transform: translateY(-1px) !important;
+}
+
+/* ── Download Button ────────────────────────────────────────────────────────── */
+div[data-testid="stDownloadButton"] > button {
+    background: #111e33 !important;
+    color: #e2e8f0 !important;
+    border: 1px solid #203a5c !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    min-height: 44px !important;
+    width: 100% !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="stDownloadButton"] > button:hover {
+    background: #1a2f4f !important;
+    border-color: #3b82f6 !important;
+    color: #ffffff !important;
+    transform: translateY(-1px) !important;
+}
+
+/* ── Destination Link Buttons (st.link_button) ──────────────────────────────── */
+div[data-testid="stLinkButton"] > a {
+    background: #111d2e !important;
+    color: #93c5fd !important;
+    border: 1px solid #1e324c !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    font-size: 0.88rem !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 42px !important;
+    width: 100% !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="stLinkButton"] > a:hover {
+    background: #182840 !important;
+    color: #ffffff !important;
+    border-color: #3b82f6 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* ── Agent Status Widgets & Expanders ───────────────────────────────────────── */
+[data-testid="stStatusWidget"],
+div[data-testid="stExpander"] {
+    background: #0b121e !important;
+    border: 1px solid #1a2a3e !important;
+    border-radius: 12px !important;
+    margin-bottom: 0.75rem !important;
+    width: 100% !important;
+}
+
+details[data-testid="stExpander"] summary p,
+[data-testid="stStatusWidget"] summary p {
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
+    font-size: clamp(0.85rem, 2vw, 0.95rem) !important;
+}
+
+/* ── Section Headers ────────────────────────────────────────────────────────── */
+.sec-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 2.2rem 0 0.85rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #1a2a3e;
+}
+
+.sec-head span {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 700;
+    color: #f1f5f9;
+}
+
+/* ── Metrics Dashboard (Flexible Grid) ──────────────────────────────────────── */
+.metric-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: clamp(0.6rem, 2vw, 1rem);
+    margin: 1.5rem 0;
+    width: 100%;
+}
+
+.metric-box {
+    background: #0b121e;
+    border: 1px solid #1a2a3e;
+    border-radius: 12px;
+    padding: clamp(0.75rem, 2vw, 1.1rem);
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    min-width: 0;
+}
+
+.metric-val {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    font-weight: 800;
+    color: #38bdf8;
+    line-height: 1.2;
+}
+
+.metric-lbl {
+    font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+    color: #94a3b8;
+    margin-top: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+}
+
+.save-bar {
+    background: #0b121e;
+    border: 1px solid #1a2a3e;
+    border-radius: 10px;
+    padding: 0.75rem 1.2rem;
+    color: #94a3b8;
+    font-size: 0.88rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ── Sidebar ────────────────────────────────────────────────────────────────── */
+section[data-testid="stSidebar"] {
+    background: #060a10 !important;
+    border-right: 1px solid #141f30 !important;
+}
+
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] span,
+section[data-testid="stSidebar"] label {
+    color: #94a3b8 !important;
+}
+
+.sidebar-chip {
+    background: #0c1420;
+    border: 1px solid #1a2a3e;
+    border-radius: 8px;
+    padding: 0.5rem 0.8rem;
+    margin-bottom: 0.45rem;
+    font-size: 0.83rem;
+    color: #93c5fd;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.sidebar-title {
+    color: #f1f5f9;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 1.2rem 0 0.5rem;
+}
+
+/* ── Text Inputs & Textareas ────────────────────────────────────────────────── */
+.stTextArea textarea,
+.stTextInput input {
+    background: #0a111a !important;
+    border: 1px solid #1e3050 !important;
+    border-radius: 10px !important;
+    color: #f1f5f9 !important;
+    font-size: clamp(0.88rem, 2vw, 0.95rem) !important;
+    padding: 0.75rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.stTextArea textarea:focus,
+.stTextInput input:focus {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+}
+
+.stTextInput label,
+.stTextArea label {
+    color: #93c5fd !important;
+    font-weight: 600 !important;
+    font-size: clamp(0.8rem, 2vw, 0.9rem) !important;
+}
+
+/* ── Responsive Tables (Smooth Horizontal Scroll on Mobile) ─────────────────── */
+div:has(> table),
+div[data-testid="stTable"] {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    margin: 1.2rem 0 !important;
+    border-radius: 10px !important;
+}
+
+table {
+    width: 100% !important;
+    min-width: 540px; /* Mobile par table columns dab na jayein */
+    border-collapse: collapse !important;
+    background: #090e17 !important;
+    overflow: hidden !important;
+    border: 1px solid #1a2a3e !important;
+}
+
+th {
+    background: #0f1826 !important;
+    color: #93c5fd !important;
+    font-weight: 600 !important;
+    padding: clamp(8px, 1.5vw, 12px) clamp(10px, 2vw, 14px) !important;
+    border-bottom: 2px solid #1a2a3e !important;
+    text-align: left !important;
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem) !important;
+}
+
+td {
+    padding: clamp(8px, 1.5vw, 12px) clamp(10px, 2vw, 14px) !important;
+    border-bottom: 1px solid #121c2a !important;
+    color: #cce0f5 !important;
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem) !important;
+}
+
+tr:hover td {
+    background: #0d1624 !important;
+}
+
+/* ── Responsive Destination Images ─────────────────────────────────────────── */
+img, .stImage img {
+    border-radius: 10px !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+}
+
+/* ── JSON Viewer & Alerts ───────────────────────────────────────────────────── */
+[data-testid="stJson"] {
+    background: #090e17 !important;
+    border: 1px solid #1a2a3e !important;
+    border-radius: 8px !important;
+    overflow-x: auto !important;
+}
+
+.stAlert {
+    background: #0b121e !important;
+    border: 1px solid #1a2a3e !important;
+    border-radius: 10px !important;
+    word-break: break-word !important;
+}
+
+/* ── Streamlit Horizontal Block Auto-Wrap ──────────────────────────────────── */
+div[data-testid="stHorizontalBlock"] {
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+}
+
+/* ============================================================================
+   📱 DEVICE-SPECIFIC MEDIA QUERIES (Tablets, iPads & Mobile Phones)
+   ============================================================================ */
+
+/* 📱 Tablets & iPad Mini / Air (<= 992px) */
+@media (max-width: 992px) {
+    .block-container {
+        padding-top: 1rem !important;
+    }
+    
+    /* 3 destination cards tablet par 2-per-row ya 1-per-row adjust hon */
+    div[data-testid="column"] {
+        min-width: 45% !important;
+    }
+}
+
+/* 📱 Mobile Phones & iPhones (<= 768px) */
+@media (max-width: 768px) {
+    .block-container {
+        padding-left: 0.85rem !important;
+        padding-right: 0.85rem !important;
+        padding-top: 0.8rem !important;
+    }
+
+    .hero-wrapper {
+        min-height: 200px;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Saare columns ek ke niche ek stack hon (1 card per row) */
+    div[data-testid="column"] {
+        min-width: 100% !important;
+        flex: 1 1 100% !important;
+    }
+
+    /* Metric cards 2 per row ya 1 per row grid mein clean arrange hon */
+    .metric-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .metric-box:last-child {
+        grid-column: span 2; /* 3rd box full width le */
+    }
+
+    /* Quick action buttons mobile pe easily clickable hon */
+    button[kind="secondary"],
+    div[data-testid="stButton"] > button[kind="secondary"] {
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* 📱 Small Compact Phones (iPhone SE, Galaxy A-series <= 480px) */
+@media (max-width: 480px) {
+    .hero-wrapper {
+        min-height: 180px;
+    }
+
+    .metric-row {
+        grid-template-columns: 1fr; /* Har metric ek single row le */
+    }
+
+    .metric-box:last-child {
+        grid-column: auto;
+    }
+
+    .sec-head {
+        margin: 1.5rem 0 0.65rem;
+    }
+}
